@@ -42,6 +42,7 @@ best_buy = Store(product_list)
 
 
 def print_menu():
+    """Prints the main menu options."""
     print()
     print("Bestbuy Store Menu:")
     print("1. List all products in store")
@@ -52,6 +53,9 @@ def print_menu():
 
 
 def start(store: Store):
+    """Starts the user interaction loop and handles input dispatching.
+    :param store: The store instance containing products.
+    """
     print("Welcome to the Store Manager!")
     while True:
         print_menu()

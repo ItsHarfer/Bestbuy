@@ -93,7 +93,7 @@ class Store:
         :raises TypeError: If shopping_list is not a list or items are of incorrect types
         :raises ValueError: If the list is empty
         """
-        if type(shopping_list) is not list:
+        if not isinstance(shopping_list, list):
             raise TypeError("Invalid shopping list type")
         if len(shopping_list) == 0:
             raise ValueError("Shopping list is empty")
@@ -131,6 +131,7 @@ class Store:
 
 
 def main():
+    """Main function to test the Store class."""
     product_list = [
         Product("MacBook Air M2", price=1450, quantity=100),
         Product("Bose QuietComfort Earbuds", price=250, quantity=500),

@@ -94,7 +94,8 @@ class Product:
         """
         if requested_quantity > self.quantity:
             raise ValueError(
-                f"Requested quantity ({requested_quantity}) exceeds available stock ({self.quantity})."
+                f"Requested quantity ({requested_quantity}) exceeds available stock "
+                f"({self.quantity})."
             )
 
     @staticmethod
@@ -136,6 +137,7 @@ class Product:
 
 
 def main():
+    """Main function to test the Product class."""
     bose = Product("Bose QuietComfort Earbuds", price=250, quantity=500)
     mac = Product("MacBook Air M2", price=1450, quantity=100)
 
