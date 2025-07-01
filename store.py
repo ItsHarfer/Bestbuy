@@ -54,7 +54,12 @@ class Store:
 
         :return: Number of products
         """
-        return len(self.product_list)
+
+        total_quantity = 0
+        all_products = self.get_all_products()
+        for product in all_products:
+            total_quantity += product.get_quantity()
+        return total_quantity
 
     def get_all_products(self) -> list[Product]:
         """
