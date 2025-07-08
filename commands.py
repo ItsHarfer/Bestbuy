@@ -31,10 +31,7 @@ def handle_list_products(store: Store) -> None:
         print("No products in store.")
         return
 
-    print()
-    print("List of products:")
-    for index, product in enumerate(store.get_all_products(), start=1):
-        print(f"{index}. {product.show()}")
+    store.print_products()
 
 
 def handle_show_total_quantity(store: Store) -> None:

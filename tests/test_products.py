@@ -5,6 +5,9 @@ These tests verify the functionality, error handling, and edge cases for the Pro
 including initialization, validation, state toggling, and purchasing logic.
 """
 
+import io
+from contextlib import redirect_stdout
+
 from products import Product
 
 
@@ -137,12 +140,18 @@ def test_is_active():
 
 
 def test_show():
-    """Test that the string representation contains expected product details."""
+    """Test that the string representation is printed correctly."""
     product = Product("Test Product", 10.0, 5)
-    result = product.show()
-    assert "Test Product" in result
-    assert "Price: 10.0" in result
-    assert "Quantity: 5" in result
+
+    # Redirect standard output to the buffer so we can capture and inspect what 'show()' prints
+    buffer = io.StringIO()
+    with redirect_stdout(buffer):
+        product.show()
+    output = buffer.getvalue()
+
+    assert "Test Product" in output
+    assert "Price: 10.0" in output
+    assert "Quantity: 5" in output
 
 
 def test_buy_valid_quantity():

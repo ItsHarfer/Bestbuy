@@ -14,7 +14,7 @@ def test_store_initialization():
     p1 = Product("Phone", 500.0, 10)
     p2 = Product("Tablet", 300.0, 5)
     store = Store([p1, p2])
-    assert store.get_total_quantity() == 2
+    assert store.get_total_quantity() == 15
     assert p1 in store.get_all_products()
     assert p2 in store.get_all_products()
 

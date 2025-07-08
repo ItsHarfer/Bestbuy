@@ -30,6 +30,9 @@ def process_order(store: Store) -> None:
 
     while True:
         try:
+
+            store.print_products()
+
             choice = int(input("Enter product number to buy (0 to finish): "))
             if choice == 0:
                 break

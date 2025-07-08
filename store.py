@@ -55,19 +55,31 @@ class Store:
         :return: Number of products
         """
 
-        total_quantity = 0
-        all_products = self.get_all_products()
-        for product in all_products:
-            total_quantity += product.get_quantity()
-        return total_quantity
+        return sum(product.quantity for product in self.product_list)
 
     def get_all_products(self) -> list[Product]:
         """
-        Retrieve all products currently in the store.
+        Retrieve all active products currently in the store.
 
-        :return: List of Product instances
+        :return: List of active Product instances
         """
-        return self.product_list
+        return [product for product in self.product_list if product.active]
+
+    def print_products(self) -> None:
+        """
+        Print a numbered list of all active products in the store.
+        """
+
+        active_products = self.get_all_products()
+        if not active_products:
+            print("No products available.")
+        else:
+            print()
+            print("Available products:")
+            for idx, product in enumerate(active_products, start=1):
+                print(f"{idx}. ", end="")
+                product.show()
+            print()
 
     def order(self, shopping_list: list[tuple[Product, int]]) -> float:
         """

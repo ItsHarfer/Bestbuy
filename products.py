@@ -64,13 +64,12 @@ class Product:
         """Deactivates the product"""
         self.active = False
 
-    def show(self) -> str:
+    def show(self) -> None:
         """
-        Returns a string that represents the product.
-        :return: String representation of the product. For example,
-        "MacBook Air M2, Price: 1450, Quantity: 100"
+        Prints a string that represents the product.
+        For example, "MacBook Air M2, Price: 1450, Quantity: 100"
         """
-        return f"{self.name}, Price: {self.price}, Quantity: {self.quantity}"
+        print(f"{self.name}, Price: {self.price}, Quantity: {self.quantity}")
 
     def buy(self, quantity: int) -> float:
         """
@@ -83,6 +82,11 @@ class Product:
         self.validate_quantity(quantity)
         self.validate_stock(quantity)
         self.quantity -= quantity
+
+        # Deactivate the product if it reaches 0
+        if self.quantity == 0:
+            self.active = False
+
         return self.price * quantity
 
     def validate_stock(self, requested_quantity: int) -> None:
